@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Heroes.Lib
 {
-    internal class Warrior : Hero
+    public class Warrior : Hero
     {
         public Warrior()
         {

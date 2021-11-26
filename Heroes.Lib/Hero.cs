@@ -3,7 +3,7 @@
     public abstract class Hero
     {
         public uint Health { get; set; }
-        protected uint Damage { get; set; }
+        public uint Damage { get; set; }
 
         public virtual void Attack(Hero enemy)
         {

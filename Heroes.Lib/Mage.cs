@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Heroes.Lib
 {
-    internal class Mage : Hero
+    public class Mage : Hero
     {
         public Mage()
         {
