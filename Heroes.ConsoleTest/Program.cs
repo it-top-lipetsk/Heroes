@@ -1,4 +1,5 @@
-﻿using Heroes.Lib;
+﻿using System;
+using Heroes.Lib;
 
 namespace Heroes.ConsoleTest
 {
@@ -16,18 +17,18 @@ namespace Heroes.ConsoleTest
             switch(select)
             {
                 case "1":
-                    hero = new Warrior();
-                    enemy = new Mage();
+                    hero = new Warrior(Console.WriteLine);
+                    enemy = new Mage(Console.WriteLine);
                     break;
 
                 case "2":
-                    hero = new Mage();
-                    enemy = new Warrior();
+                    hero = new Mage(Console.WriteLine);
+                    enemy = new Warrior(Console.WriteLine);
                     break;
 
                 default:
-                    hero = null;
-                    enemy = null;
+                    hero = null!;
+                    enemy = null!;
                     break;
             }
 
