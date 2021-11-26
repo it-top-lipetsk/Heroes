@@ -4,7 +4,7 @@ namespace Heroes.Lib
 {
     public class Mage : Hero
     {
-        public Mage(Action<string> death) : base(death)
+        public Mage(Action<string> infoDeath) : base(infoDeath)
         {
             Health = 150;
             Damage = 15;

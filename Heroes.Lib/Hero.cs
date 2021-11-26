@@ -4,9 +4,10 @@ namespace Heroes.Lib
 {
     public abstract class Hero
     {
-        protected Hero(Action<string> death)
+        protected Hero(Action<string> infoDeath)
         {
-            _death = death;
+            _infoDeath = infoDeath;
+            _death = false;
         }
 
         private int _health;
@@ -21,7 +22,7 @@ namespace Heroes.Lib
                 if (value <= 0)
                 {
                     _health = 0;
-                    _death.Invoke("Умер"); // if (Death != null) Death("Умер");
+                    _infoDeath.Invoke("Умер"); // if (Death != null) Death("Умер");
                 }
                 else
                 {
@@ -31,13 +32,17 @@ namespace Heroes.Lib
         }
         public int Damage { get; protected set; }
 
-        private readonly Action<string> _death;
+        private readonly Action<string> _infoDeath;
+        protected bool _death;
 
         public virtual void Attack(Hero enemy)
         {
             if (enemy is null) throw new ArgumentNullException(nameof(enemy));
-            
-            enemy.Health -= Damage;
+
+            if (!_death)
+            {
+                enemy.Health -= Damage;
+            }
         }
     }
 }
