@@ -7,7 +7,7 @@ namespace Heroes.Lib
         public Warrior(Action<string> death) : base(death)
         {
             Health = 100;
-            Damage = 20;
+            Damage = 200;
         }
     }
 }

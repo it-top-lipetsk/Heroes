@@ -6,11 +6,11 @@ namespace Heroes.Lib
     {
         protected Hero(Action<string> death)
         {
-            Death = death;
+            _death = death;
         }
 
-        private uint _health;
-        public uint Health
+        private int _health;
+        public int Health
         {
             get //get => _health;
             {
@@ -21,7 +21,7 @@ namespace Heroes.Lib
                 if (value <= 0)
                 {
                     _health = 0;
-                    Death?.Invoke("Умер"); // if (Death != null) Death("Умер");
+                    _death.Invoke("Умер"); // if (Death != null) Death("Умер");
                 }
                 else
                 {
@@ -29,9 +29,9 @@ namespace Heroes.Lib
                 }
             }
         }
-        public uint Damage { get; protected set; }
+        public int Damage { get; protected set; }
 
-        protected Action<string> Death;
+        private readonly Action<string> _death;
 
         public virtual void Attack(Hero enemy)
         {
