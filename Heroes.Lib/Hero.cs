@@ -1,9 +1,37 @@
-﻿namespace Heroes.Lib
+﻿using System;
+
+namespace Heroes.Lib
 {
     public abstract class Hero
     {
-        public uint Health { get; set; }
-        public uint Damage { get; set; }
+        protected Hero(Action<string> death)
+        {
+            Death = death;
+        }
+
+        private uint _health;
+        public uint Health
+        {
+            get //get => _health;
+            {
+                return _health;
+            }
+            protected set
+            {
+                if (value <= 0)
+                {
+                    _health = 0;
+                    Death?.Invoke("Умер"); // if (Death != null) Death("Умер");
+                }
+                else
+                {
+                    _health = value;
+                }
+            }
+        }
+        public uint Damage { get; protected set; }
+
+        protected Action<string> Death;
 
         public virtual void Attack(Hero enemy)
         {
